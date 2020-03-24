@@ -7,17 +7,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-//@Controller
-public class JokeController {
-    private JokeService jokeService;
+@Controller
+public class MyJokesController {
+    private final JokeService jokeService;
 
-//    @Autowired
-    public JokeController( JokeService jokeService) {
+    @Autowired
+    public MyJokesController(JokeService jokeService) {
         this.jokeService = jokeService;
     }
-//    @RequestMapping({"/",""})
+    @RequestMapping({"/",""})
     public String showJoke(Model model){
-        model.addAttribute("joke",jokeService.getJoke());
-        return "chucknorris";
+
+        model.addAttribute("myjoke",jokeService.getJoke());
+        return "myjokes";
     }
 }
